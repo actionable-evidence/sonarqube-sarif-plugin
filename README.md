@@ -2,6 +2,8 @@
 
 # SARIF Export Plugin for SonarQube Server
 
+<img width="1338" height="724" alt="sarif export preview" src="https://github.com/user-attachments/assets/2c324c62-809c-40ff-9da0-169658e3064c" />
+
 Adds a web service, `GET /api/sarif/export`, that converts a project's
 current issues into a [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/)
 report — the format GitHub code scanning, Azure DevOps, and most CI
