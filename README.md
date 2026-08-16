@@ -8,7 +8,10 @@ security dashboards consume.
 ## How it works
 
 - A project page ("SARIF Export", registered via `PageDefinition`) shows an
-  **Export SARIF** button, rendered by `static/export.js`. Clicking it
+  **Export SARIF** button, rendered by `static/export.js`. To reach it, open
+  any project in SonarQube and select **SARIF Export** from the project's
+  navigation menu (the page is scoped to projects, so it only appears on a
+  project — not the global or portfolio views). Clicking it
   downloads the report for the currently viewed project/branch/PR. Below the
   button, the page also fetches the same report in the background and shows a
   result/rule count plus a pretty-printed JSON preview (capped at the first 50
