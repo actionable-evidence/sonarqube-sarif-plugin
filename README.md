@@ -57,10 +57,11 @@ Edit `pom.xml`:
 
 1. `sonar.plugin.api.version` — pick the version matching your SonarQube
    Server release from the [compatibility matrix](https://github.com/SonarSource/sonar-plugin-api#sonarqube).
-   The pom currently targets the 2026.2/2026.3 LTA line (`13.5.0.4319`).
+   The pom currently targets the 2026.1 LTA line (`13.4.3.4290`), i.e.
+   SonarQube Server 2026.1.x / Community Build 26.1, which runs on Java 21.
 2. `sonar.ws.version` — any recent SonarQube release train version works;
    the `WsClient`/`GetRequest` classes this plugin uses have been stable for
-   years. Pinned to `25.11.0.114957` as a starting point.
+   years. Pinned to `26.1.0.118079` (the 2026.1 LTA build) as a starting point.
 
 ## Build
 

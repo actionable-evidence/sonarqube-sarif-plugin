@@ -23,16 +23,18 @@
       IMPORTANT: pick the sonar-plugin-api version that matches the SonarQube
       Server you are targeting. See the compatibility matrix at
       https://github.com/SonarSource/sonar-plugin-api#sonarqube
-      The value below targets the 2026.2/2026.3 LTA line.
+      The value below targets the 2026.1 LTA line (Server 2026.1.x /
+      Community Build 26.1), which runs on Java 21.
     -->
-    <sonar.plugin.api.version>13.5.0.4319</sonar.plugin.api.version>
+    <sonar.plugin.api.version>13.4.3.4290</sonar.plugin.api.version>
 
     <!--
       sonar-ws is versioned alongside SonarQube Server itself. Pick a version
       reasonably close to your server's release; the WsClient/GetRequest
       classes this plugin uses have been stable for a long time.
+      26.1.0.118079 is the sonar-ws build for the 2026.1 LTA line.
     -->
-    <sonar.ws.version>25.11.0.114957</sonar.ws.version>
+    <sonar.ws.version>26.1.0.118079</sonar.ws.version>
   </properties>
 
   <dependencies>
