@@ -108,6 +108,22 @@ has processed the scan), then `curl` this endpoint and upload the resulting
 `.sarif.json` — e.g. with `github/codeql-action/upload-sarif` on GitHub
 Actions.
 
+## Severity mapping
+
+The legacy SonarQube `severity` field is mapped to the SARIF `level` in
+`SarifBuilder#toSarifLevel`:
+
+| SonarQube severity | SARIF level |
+|--------------------|-------------|
+| `BLOCKER`          | `error`     |
+| `CRITICAL`         | `error`     |
+| `MAJOR`            | `warning`   |
+| `MINOR`            | `note`      |
+| `INFO`             | `note`      |
+
+Any unrecognized value falls back to `note`. Issues with no severity default
+to `MAJOR` (→ `warning`).
+
 ## Known limitations / good next steps
 
 - **Security Hotspots** are a separate concept from issues in SonarQube and
