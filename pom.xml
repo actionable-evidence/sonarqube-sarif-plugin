@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sonar</groupId>
+  <artifactId>sonar-sarifexport-plugin</artifactId>
+  <version>1.0.0</version>
+  <packaging>sonar-plugin</packaging>
+
+  <name>SARIF Export Plugin</name>
+  <description>
+    Adds a /api/sarif/export web service to SonarQube Server that converts a
+    project's current issues into a SARIF 2.1.0 report.
+  </description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>17</maven.compiler.release>
+
+    <!--
+      IMPORTANT: pick the sonar-plugin-api version that matches the SonarQube
+      Server you are targeting. See the compatibility matrix at
+      https://github.com/SonarSource/sonar-plugin-api#sonarqube
+      The value below targets the 2026.1 LTA line (Server 2026.1.x /
+      Community Build 26.1), which runs on Java 21.
+    -->
+    <sonar.plugin.api.version>13.4.3.4290</sonar.plugin.api.version>
+
+    <!--
+      sonar-ws is versioned alongside SonarQube Server itself. Pick a version
+      reasonably close to your server's release; the WsClient/GetRequest
+      classes this plugin uses have been stable for a long time.
+      26.1.0.118079 is the sonar-ws build for the 2026.1 LTA line.
+    -->
+    <sonar.ws.version>26.1.0.118079</sonar.ws.version>
+  </properties>
+
+  <dependencies>
+    <!-- Plugin API: provided by the server at runtime, must NOT be bundled -->
+    <dependency>
+      <groupId>org.sonarsource.api.plugin</groupId>
+      <artifactId>sonar-plugin-api</artifactId>
+      <version>${sonar.plugin.api.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!--
+      sonar-ws gives us WsClientFactories / GetRequest / WsResponse, which we
+      use together with Request#localConnector() to call other SonarQube web
+      services (api/issues/search, api/rules/show) in-process, without an
+      HTTP round trip and while respecting the caller's permissions.
+      This is NOT part of the shared API classloader, so it must be bundled
+      (scope=compile, the default).
+    -->
+    <dependency>
+      <groupId>org.sonarsource.sonarqube</groupId>
+      <artifactId>sonar-ws</artifactId>
+      <version>${sonar.ws.version}</version>
+    </dependency>
+
+    <!-- Used to parse the JSON returned by the internal web services and to build the SARIF document -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.18.9</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}-${project.version}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+        <artifactId>sonar-packaging-maven-plugin</artifactId>
+        <version>1.23.0.740</version>
+        <extensions>true</extensions>
+        <configuration>
+          <!-- Entry-point class, must implement org.sonar.api.Plugin -->
+          <pluginClass>com.sonar.sarifexport.SarifExportPlugin</pluginClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

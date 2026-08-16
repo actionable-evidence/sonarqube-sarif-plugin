@@ -1,0 +1,9 @@
+target/
+bin/
+.DS_Store
+.classpath
+.project
+.settings/
+.vscode/
+.claude/settings.local.json
+
