@@ -1,4 +1,5 @@
-[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=actionable-evidence_sonarqube-sarif-plugin&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=actionable-evidence_sonarqube-sarif-plugin)
+
+[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=actionable-evidence_sonarqube-sarif-plugin4&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=actionable-evidence_sonarqube-sarif-plugin4)
 
 # SARIF Export Plugin for SonarQube Server
 
