@@ -3,7 +3,7 @@
 
 # SARIF Export Plugin for SonarQube Server
 
-<img width="1338" height="724" alt="sarif export preview" src="https://github.com/user-attachments/assets/2c324c62-809c-40ff-9da0-169658e3064c" />
+<img width="1342" height="727" alt="Screenshot 2026-08-17 at 3 50 37 PM" src="https://github.com/user-attachments/assets/19356f90-4118-4a59-96b1-101cb0b8a39b" />
 
 Adds a web service, `GET /api/sarif/export`, that converts a project's
 current issues into a [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/)
