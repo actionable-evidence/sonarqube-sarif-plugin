@@ -1,8 +1,9 @@
-[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=actionable-evidence_sonarqube-sarif-plugin&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=actionable-evidence_sonarqube-sarif-plugin)
+
+[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=actionable-evidence_sonarqube-sarif-plugin4&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=actionable-evidence_sonarqube-sarif-plugin4)
 
 # SARIF Export Plugin for SonarQube Server
 
-<img width="1338" height="724" alt="sarif export preview" src="https://github.com/user-attachments/assets/2c324c62-809c-40ff-9da0-169658e3064c" />
+<img width="1342" height="727" alt="Screenshot 2026-08-17 at 3 50 37 PM" src="https://github.com/user-attachments/assets/19356f90-4118-4a59-96b1-101cb0b8a39b" />
 
 Adds a web service, `GET /api/sarif/export`, that converts a project's
 current issues into a [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/)
@@ -107,6 +108,22 @@ Gate/analysis to finish processing (issues are only final after the server
 has processed the scan), then `curl` this endpoint and upload the resulting
 `.sarif.json` — e.g. with `github/codeql-action/upload-sarif` on GitHub
 Actions.
+
+## Severity mapping
+
+The legacy SonarQube `severity` field is mapped to the SARIF `level` in
+`SarifBuilder#toSarifLevel`:
+
+| SonarQube severity | SARIF level |
+|--------------------|-------------|
+| `BLOCKER`          | `error`     |
+| `CRITICAL`         | `error`     |
+| `MAJOR`            | `warning`   |
+| `MINOR`            | `note`      |
+| `INFO`             | `note`      |
+
+Any unrecognized value falls back to `note`. Issues with no severity default
+to `MAJOR` (→ `warning`).
 
 ## Known limitations / good next steps
 
