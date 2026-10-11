@@ -6,7 +6,7 @@
 
   <groupId>com.sonar</groupId>
   <artifactId>sonar-sarifexport-plugin</artifactId>
-  <version>1.0.0</version>
+  <version>26.1.0</version>
   <packaging>sonar-plugin</packaging>
 
   <name>SARIF Export Plugin</name>
@@ -15,9 +15,17 @@
     project's current issues into a SARIF 2.1.0 report.
   </description>
 
+  <licenses>
+    <license>
+      <name>Apache-2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
+    <sonar.projectKey>com.sonar:sonar-sarifexport-plugin</sonar.projectKey>
 
     <!--
       IMPORTANT: pick the sonar-plugin-api version that matches the SonarQube

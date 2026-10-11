@@ -69,14 +69,14 @@ Edit `pom.xml`:
 mvn clean package
 ```
 
-Produces `target/sonar-sarifexport-plugin-1.0.0.jar`.
+Produces `target/sonar-sarifexport-plugin-26.1.0.jar`.
 
 ## Deploy
 
 1. Copy the jar to `$SONARQUBE_HOME/extensions/plugins/`.
 2. Restart the server.
 3. Confirm it loaded: `logs/web.log` should contain a line like
-   `Deploy plugin SARIF Export Plugin / 1.0.0`.
+   `Deploy plugin SARIF Export Plugin / 26.1.0`.
 
 ## Use it
 
